@@ -29,7 +29,7 @@ function page({ params }) {
   const [image, setImage] = useState('');
   const [product, setProduct] = useState({})
   // const dispatch = useDispatch();
-
+  
   //const params = useParams()
   const id = params.id;
   console.log(params)
@@ -39,7 +39,7 @@ function page({ params }) {
       try {
    
         const res = await fetch(
-          `http://localhost:8800/popularproducts/${id}`,
+          `${apiUrl}/${id}`,
           {
             cache: 'no-store',
           }
