@@ -1,4 +1,5 @@
 'use client';
+
 import {  useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 //import { useDispatch, useSelector } from "react-redux";
@@ -31,13 +32,14 @@ function page({ params }) {
 
   //const params = useParams()
   const id = params.id;
-  console.log(id)
-/* 
+  console.log(params)
+ 
      useEffect(() => {
     const singleProduct = async () => {
       try {
+   
         const res = await fetch(
-          `http://localhost:8800/popularproducts/${params.id}`,
+          `http://localhost:8800/popularproducts/${id}`,
           {
             cache: 'no-store',
           }
@@ -51,22 +53,23 @@ function page({ params }) {
       }
     };
     singleProduct();
-  }, [params.id]);
+  }, [params._id]);
 
   console.log(product)
-*/
+ 
+
   const addCart = (product) => {
     dispatch(add(product));
   };
   const dispatch = useDispatch();
 
-  useEffect(() => {
+/*   useEffect(() => {
     dispatch(getData());
   }, []);
- 
-  if (pending) {
+  */
+/*   if (pending) {
     return <h1>Loading...</h1>;
-  }
+  } */
 
   const handleIncrease = (item) => {
     dispatch(add(item))
@@ -75,14 +78,14 @@ function page({ params }) {
 
 
 
-  const single = data.find((item) => item._id === id);
+  //const single = data.find((item) => item._id === id);
 
   /*  const handleClick = () => {
     setImage()
   
   }
      */
-  console.log(single?.image);
+  //console.log(single?.image);
   return (
     <div className="flex flex-col gap-3">
       <div className=" flex justify-between w-full items-center h-10 font-light bg-gray-300 text-xs">
@@ -149,7 +152,7 @@ function page({ params }) {
             ) : (
               <div className=" w-80 h-96 relative">
                 <Image
-                  src={single?.image}
+                  src={product.image}
                   alt="/"
                   fill
                   objectFit="cover"
@@ -167,12 +170,12 @@ function page({ params }) {
             <div className=" w-16 h-24 relative ml-3 mt-5">
               <Image
                 className=" absolute"
-                src={single?.image}
+                src={product.image}
                 alt=""
                 fill
                 objectFit="cover"
                 onClick={() =>
-                  setImage(single?.image)
+                  setImage(product.image)
                 }
               />
             </div>
@@ -212,7 +215,7 @@ function page({ params }) {
           </div>
         </div>
         <div className="">
-          <p className="font-bold text-lg">{single?.name}</p>
+          <p className="font-bold text-lg">{product.name}</p>
 
           <p className="text-xs"> GEMINI</p>
           <div className=" flex mt-5 gap-40 w-96 border-b-2">
@@ -225,7 +228,7 @@ function page({ params }) {
             </div>
             <p> 1 rating </p>
           </div>
-          <p className="mt-5">${single?.price}</p>
+          <p className="mt-5">${product.price}</p>
           <div className="flex mt-5 gap-5 items-end">
             <p>Model: </p>
             <div className="flex  justify-end">
@@ -253,7 +256,7 @@ function page({ params }) {
               +
             </button> */}
             <button
-              onClick={() => addCart(single)}
+              onClick={() => addCart(product)}
               className="w-20 h-7  p-1 text-white text-xs bg-blue-900 cursor-pointer"
             >
               {' '}
@@ -261,7 +264,7 @@ function page({ params }) {
             </button>
           </div>
           <div className="w-96 mt-5">
-            <p className="whitespace-normal">{single?.desc}</p>
+            <p className="whitespace-normal">{product.desc}</p>
           </div>
         </div>
       </div>
