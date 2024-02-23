@@ -23,7 +23,7 @@ app.listen(8800, () => {
  app.use(express.json())
  app.use(cors({
 
-   origin: "https://buycomms-full-mongo-cloudinary-frontend.vercel.app",
+   origin: "https://buycomms-full-mongo-cloudinary-y11e.vercel.app",
   
  }))
  app.use(bodyParser.json())
@@ -137,7 +137,7 @@ app.get("/popularproducts", async (req,res) => {
  });
 
 
- app.get("/popularproducts/:id", async (req,res) => {
+ app.get("/:id", async (req,res) => {
 
    try {
       const product = await productModel.findById(req.params.id)
