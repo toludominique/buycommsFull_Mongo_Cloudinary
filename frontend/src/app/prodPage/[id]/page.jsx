@@ -53,7 +53,7 @@ function page({ params }) {
       }
     };
     singleProduct();
-  }, [params._id]);
+  }, [params.id]);
 
   console.log(product)
  
