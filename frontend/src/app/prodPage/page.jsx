@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useEffect } from 'react';
+/* import React, { useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdOutlineStarBorder } from 'react-icons/md';
 import { IoAddCircle } from 'react-icons/io5';
 import { FaRegHeart } from 'react-icons/fa';
-import Image from 'next/image';
+import Image from 'next/image'; */
 //import applewatch from '../../public/assets/applewatch.png';
 
-import { useDispatch, useSelector } from 'react-redux';
+/* import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '@/Redux/productSlice';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; */
 
 /* export async function generateStaticParams() {
   //const apiUrl = process.env.NEXT_PUBLIC_API_URL
@@ -26,7 +26,7 @@ import { useRouter } from 'next/navigation';
 //console.log(data)
 
 const PopularProducts = () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+/*   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const {data, pending} = useSelector((state) => state.product)
 
   const router = useRouter()
@@ -39,9 +39,9 @@ const PopularProducts = () => {
      dispatch(getData())
   },[])
     
-
+ */
   return (
-    <div>
+  /*   <div>
       <div className="flex mb-5 mt-5 justify-between">
         <p className="text-xl font-bold">Popular Products 2023</p>
         <div className="flex gap-2">
@@ -97,7 +97,7 @@ const PopularProducts = () => {
                 </div>
               </div>
             </div>
-          ))}
+          ))} */
  
           {/*  <div>
            <Link href={'/productpage'}>
@@ -227,9 +227,9 @@ const PopularProducts = () => {
            </div>
          </div>
        </div>  */}
-         </div>
+        /*  </div>
       )} 
-    </div>
+    </div> */
   );
 };
 
