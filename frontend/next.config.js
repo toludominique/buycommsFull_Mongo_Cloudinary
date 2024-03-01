@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
+      unoptimized: true,
 
       /*   loader: "cloudinary",
         path: 'https://res.cloudinary.com/dqpimecmi/image/upload' */

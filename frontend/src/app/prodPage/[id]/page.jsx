@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {  useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -19,18 +19,39 @@ import Link from 'next/link';
 import { getData } from '@/Redux/productSlice';
 //import { getData } from "@/Redux/singleProductSlice";
 
+
+/* export async function generateStaticParams  () {
+
+  const res = await fetch(
+    `http://localhost:8800/popularproducts`
+  );
+  const data = await res.json()
+ 
+   return data.map((item) => ({
+    params: {
+      id: item.id
+    }
+  }))
+ 
+
+} 
+ */
+
+
 function page({ params }) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const { count } = useSelector((state) => state.counter);
   const cartProducts = useSelector((state) => state.cart);
   const {amount} = useSelector((state) => state.cart)
   const user = useSelector((state) => state.user);
-  const { data, pending } = useSelector((state) => state.product);
+  //const { data, pending } = useSelector((state) => state.product);
   const [image, setImage] = useState('');
   const [product, setProduct] = useState({})
   // const dispatch = useDispatch();
   
   //const params = useParams()
+
+  
   const id = params.id;
   console.log(params)
  
@@ -56,7 +77,11 @@ function page({ params }) {
   }, [params.id]);
 
   console.log(product)
- 
+
+  /* async function generateStaticParams  () {
+
+    return [{  }]
+  } */
 
   const addCart = (product) => {
     dispatch(add(product));

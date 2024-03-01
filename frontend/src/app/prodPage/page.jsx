@@ -1,6 +1,5 @@
 "use client";
 
-
 import React, { useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdOutlineStarBorder } from 'react-icons/md';
@@ -12,28 +11,35 @@ import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '@/Redux/productSlice';
 import Link from 'next/link';
-//import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
+/* export async function generateStaticParams() {
+  //const apiUrl = process.env.NEXT_PUBLIC_API_URL
+  const res = await fetch(`http://localhost:8800/popularproducts`);
+  const data = await res.json();
+  console.log(data);
+     return data.products.map((item) => ({
+    id:products .id
+  }));  
+}
+ */
+//console.log(data)
 
- 
- const PopularProducts =  () => {
-
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL
+const PopularProducts = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const {data, pending} = useSelector((state) => state.product)
 
-  //const router = useRouter()
+  const router = useRouter()
 
-console.log(data)
-
+  //console.log(data)
 
   const dispatch = useDispatch()
 
-
-   useEffect(() => {
+      useEffect(() => {
      dispatch(getData())
   },[])
-  
- 
+    
+
   return (
     <div>
       <div className="flex mb-5 mt-5 justify-between">
@@ -47,49 +53,53 @@ console.log(data)
           </div>
         </div>
       </div>
-      {
-        pending ? (<div> Loading ...</div>) : (
-
-          <div className="flex w-screen overflow-x-scroll justify-between gap-5">
+      {}
+       {pending ? (
+        <div> Loading ...</div>
+      ) : (
+        <div className="flex w-screen overflow-x-scroll justify-between gap-5">
           {data.map((item) => (
-         <div key={item._id}>
-           <Link href={`/prodPage/${item._id}`}>
-             <div
-             
-               className="bg-slate-200 relative mb-2 rounded-md w-60 h-80"
-             >
-               <Image className=" absolute"   src={`${item.image}`} alt="" objectFit='cover' fill />
-               <div className="absolute  w-7 h-7 bg-white ml-2 mt-2 rounded-full">
-                 <FaRegHeart className="ml-1 mt-2" />
-               </div>
-             </div>
-           </Link>
+            <div key={item._id}>
+              <Link href={`/prodPage/${item._id}`}>
+                <div className="bg-slate-200 relative mb-2 rounded-md w-60 h-80">
+                  <Image
+                    className=" absolute"
+                    src={`${item.image}`}
+                    alt=""
+                    objectFit="cover"
+                    fill
+                  />
+                  <div className="absolute  w-7 h-7 bg-white ml-2 mt-2 rounded-full">
+                    <FaRegHeart className="ml-1 mt-2" />
+                  </div>
+                </div>
+              </Link>
 
-           <div>
-             <p className="text-xs font-bold">{item.name}</p>
-             <p className="text-xs">{item.desc}</p>
-             <div className="flex w-60 justify-between">
-               <div className="">
-                 <div className="flex gap-2">
-                   <MdOutlineStarBorder />
-                   <p className="text-xs">4.7</p>
-                   <div className=" w-15 h-5 bg-slate-200 rounded-md">
-                     <p className="text-xs font-bold">7,428 Sold</p>
-                   </div>
-                 </div>
-                 <div className="flex gap-2">
-                   <p className="text-sm">{item.price}</p>
-                   <p className="text-sm font-bold">${item.price}</p>
-                 </div>
-               </div>
+              <div>
+                <p className="text-xs font-bold">{item.name}</p>
+                <p className="text-xs">{item.desc}</p>
+                <div className="flex w-60 justify-between">
+                  <div className="">
+                    <div className="flex gap-2">
+                      <MdOutlineStarBorder />
+                      <p className="text-xs">4.7</p>
+                      <div className=" w-15 h-5 bg-slate-200 rounded-md">
+                        <p className="text-xs font-bold">7,428 Sold</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <p className="text-sm">{item.price}</p>
+                      <p className="text-sm font-bold">${item.price}</p>
+                    </div>
+                  </div>
 
-               <IoAddCircle size={40} />
-             </div>
-           </div>
-         </div>
-       ))}  
-      
-         {/* <div>
+                  <IoAddCircle size={40} />
+                </div>
+              </div>
+            </div>
+          ))}
+ 
+          {/*  <div>
            <Link href={'/productpage'}>
              <div
                key={id}
@@ -123,10 +133,9 @@ console.log(data)
                <IoAddCircle size={40} />
              </div>
            </div>
-         </div> */}
-       
+         </div>  */}
 
-       {/*         <div>
+          {/* <div>
          <div className="bg-slate-200 relative mb-2 rounded-md w-60 h-80">
            <Image className="absolute mt-10" src={applewatch} alt="" />
            <div className="absolute  w-7 h-7 bg-white ml-2 mt-2 rounded-full">
@@ -187,8 +196,8 @@ console.log(data)
            </div>
          </div>
        </div>
-
-       <div>
+ */}
+          {/*    <div>
          <div className="bg-slate-200 relative mb-2 rounded-md w-60 h-80">
            <Image className="absolute mt-10" src={applewatch} alt="" />
            <div className="absolute  w-7 h-7 bg-white ml-2 mt-2 rounded-full">
@@ -217,11 +226,9 @@ console.log(data)
              <IoAddCircle size={40} />
            </div>
          </div>
-       </div> */}
-     </div>
-        )
-      }
-   
+       </div>  */}
+         </div>
+      )} 
     </div>
   );
 };

@@ -1,11 +1,14 @@
-
-
+"use client"
 
 import React from 'react'
 
-import logohere2 from '../../../../public/assets/logohere2.png';
-import applewatch from '../../../../public/assets/applewatch.png';
-import star from '../../../../public/assets/star.png';
+//import { IoTerminal } from 'react-icons/io5';
+//import {  useParams } from 'next/navigation';
+//import { useEffect, useState } from 'react';
+//import { useDispatch, useSelector } from "react-redux";
+import logohere2 from '../../public/assets/logohere2.png';
+import applewatch from '../../public/assets/applewatch.png';
+import star from '../../public/assets/star.png';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdOutlineMail, MdOutlinePerson } from 'react-icons/md';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
@@ -15,147 +18,20 @@ import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from '@/Redux/counterSlice';
 import { add, increase } from '@/Redux/cartSlice';
-import Link from 'next/link';
+import Link from 'next/link'; 
+//import { getData } from '@/Redux/productSlice';
+//import { getData } from "@/Redux/singleProductSlice";
 
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+function ProductDetail() {
 
-/* export async function generateStaticParams  () {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
+    const { count } = useSelector((state) => state.counter);
+    const cartProducts = useSelector((state) => state.cart);
+    const {amount} = useSelector((state) => state.cart)
+    const user = useSelector((state) => state.user);
   
 
-  const res = await fetch(
-    `http://localhost:8800/popularproducts`
-  );
-  const data = await res.json()
- console.log(data)
-   return data.map((item) => ({
-    params: {
-      id: item._id,
-    }
-  }))
- 
-}  */
-
- /*   async function getProduct(id) {
-  const res = await fetch(`http://localhost:8800/${id}`, {
-    cache: 'no-store'
-  });
-   
-  const product = await res.json();
-
-return res.json()
-}*/
-
-/* export async function generateStaticParams  () {
-  
-return [{"_id": "65d3d76299dd42ede719d659"}]
-}
-  */
-
-export async function getAllProduct () {
-  
-
-  const res = await fetch(
-    `http://localhost:8800/popularproducts`
-  );
-
- return res.json()
-
-}
-
-export async function singleProduct (id) {
-  
-  const res = await fetch(
-    `http://localhost:8800/${id}`
-  );
-
- return res.json()
-
-}
-
-/* export const getSingleProduct = async (params) => {
-  const singleProduct = await getProduct()
-  const product = singleProduct?.find((item) => {
-    item._id === params.id
-    
-  })
-  return product;
- 
-   
-}
-  */
-
-/* export async function generateStaticParams  () {
-  
-  return [{"_id": "65d3d76299dd42ede719d659"}]
-  }
-
- */
-
-  export async function generateStaticParams  () {
-  
-  const products = await getAllProduct()
-
-  return products.map((item) => ({id: `${item._id}`}))
-    }
-
- async function page({ params }) {
-
-
-  
-  //const dispatch = useDispatch();
-  //const { id } = params;
-  //const { cartItems } = useSelector((state) => state.cart);
-  //const user = useSelector((state) => state.user);
-  //const [product, setProduct] = useState({});
-  //const [image, setImage] = useState('');
-
-/*   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const res = await fetch(`${apiUrl}/${id}`, {
-          cache: 'no-store'
-        });
-        const data = await res.json();
-        setProduct(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (id) {
-      fetchProduct();
-    }
-    
-  
-  }, [apiUrl, id]);
-
-  const addCart = (product) => {
-    dispatch(add(product));
-  };
-
-
-  const handleIncrease = (item) => {
-    dispatch(add(item))
-  }
-
- */
-
-       /*  const res = await fetch(
-          `http://localhost:8800/${params.id}`
-        
-        );
-
-        const data = await res.json(); */
-        //setProduct(data);
-      
-     //const product = await getProduct(params.id)
-
-    /*   const product = await getSingleProduct(params.id)
-    console.log(product)
- */
-console.log("this page id is", params.id)
-const data = await singleProduct(params.id)
   return (
     <div className="flex flex-col gap-3">
     <div className=" flex justify-between w-full items-center h-10 font-light bg-gray-300 text-xs">
@@ -174,20 +50,20 @@ const data = await singleProduct(params.id)
       <div className="flex flex-row justify-between h-10 gap-5 mr-5  ">
         <div>
           <MdOutlinePerson size={20} />
-          <p className="text-xs">John</p>
+          <p className="text-xs">{user.name}</p>
         </div>
         <div className="flex flex-col items-center">
           <MdOutlineMail size={20} />
-          <p className="text-xs">John@gmail.com</p>
+          <p className="text-xs">{user.email}</p>
         </div>
         <Link href={'/cartPage'}>
           <div className="relative flex  ">
             <div className="flex right-3 bottom-2 justify-center items-center w-4 h-4 absolute rounded-full text-white text-xs bg-red-600">
-             5
+              {cartProducts.cartItems?.length}
             </div>
             <AiOutlineShoppingCart size={20} />
           </div>
-          <p className="text-xs">John</p>
+          <p className="text-xs">{user.name}</p>
         </Link>
       </div>
     </div>
@@ -215,14 +91,14 @@ const data = await singleProduct(params.id)
     <div className="flex flex-row  justify-center mt-5 ml-28 gap-5">
       <div className="flex flex-col  gap-2">
         <div>
-          {!data.image ? (
+          {image ? (
             <div className=" relative w-80 h-96">
-              <Image src={applewatch} alt="/" fill objectFit="cover" />
+              <Image src={image} alt="/" fill objectFit="cover" />
             </div>
           ) : (
             <div className=" w-80 h-96 relative">
               <Image
-                src={data.image}
+                src={product.image}
                 alt="/"
                 fill
                 objectFit="cover"
@@ -240,13 +116,13 @@ const data = await singleProduct(params.id)
           <div className=" w-16 h-24 relative ml-3 mt-5">
             <Image
               className=" absolute"
-              src={data.image}
+              src={product.image}
               alt=""
               fill
               objectFit="cover"
-              /* onClick={() =>
-                setImage(data.image)
-              } */
+              onClick={() =>
+                setImage(product.image)
+              }
             />
           </div>
 
@@ -257,7 +133,7 @@ const data = await singleProduct(params.id)
               alt=""
               fill
               objectFit="cover"
-              //onClick={() => setImage(applewatch)}
+              onClick={() => setImage(applewatch)}
             />
           </div>
 
@@ -268,7 +144,7 @@ const data = await singleProduct(params.id)
               alt=""
               fill
               objectFit="cover"
-             // onClick={() => setImage(applewatch)}
+              onClick={() => setImage(applewatch)}
             />
           </div>
 
@@ -279,13 +155,13 @@ const data = await singleProduct(params.id)
               alt=""
               fill
               objectFit="cover"
-              //onClick={() => setImage(applewatch)}
+              onClick={() => setImage(applewatch)}
             />
           </div>
         </div>
       </div>
       <div className="">
-        <p className="font-bold text-lg">{data.name}</p>
+        <p className="font-bold text-lg">{product.name}</p>
 
         <p className="text-xs"> GEMINI</p>
         <div className=" flex mt-5 gap-40 w-96 border-b-2">
@@ -298,7 +174,7 @@ const data = await singleProduct(params.id)
           </div>
           <p> 1 rating </p>
         </div>
-        <p className="mt-5">${data.price}</p>
+        <p className="mt-5">${product.price}</p>
         <div className="flex mt-5 gap-5 items-end">
           <p>Model: </p>
           <div className="flex  justify-end">
@@ -325,16 +201,16 @@ const data = await singleProduct(params.id)
           >
             +
           </button> */}
-          {/* <button
+          <button
             onClick={() => addCart(product)}
             className="w-20 h-7  p-1 text-white text-xs bg-blue-900 cursor-pointer"
           >
             {' '}
             CART
-          </button> */}
+          </button>
         </div>
         <div className="w-96 mt-5">
-          <p className="whitespace-normal">{data.desc}</p>
+          <p className="whitespace-normal">{product.desc}</p>
         </div>
       </div>
     </div>
@@ -372,10 +248,7 @@ const data = await singleProduct(params.id)
       </div>
     </div>
   </div>
-  
-);
-   
-  
+  )
 }
 
-export default page
+export default ProductDetail;

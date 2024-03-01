@@ -23,7 +23,7 @@ app.listen(8800, () => {
  app.use(express.json())
  app.use(cors({
 
-   origin: "https://buycommsfull-mongo-cloudinary-frontend.onrender.com",
+   origin: "http://localhost:3000",
   
  }))
  app.use(bodyParser.json())
@@ -135,7 +135,20 @@ app.get("/popularproducts", async (req,res) => {
  
    
  });
+/* 
+  app.get("popularproducts/:id", async (req,res) => {
 
+   try {
+      const product = await productModel.findById(req.params.id)
+      res.json(product)
+     
+      
+   } catch (error) {
+      console.log(error)
+   }
+ });
+ 
+ */
 
  app.get("/:id", async (req,res) => {
 
