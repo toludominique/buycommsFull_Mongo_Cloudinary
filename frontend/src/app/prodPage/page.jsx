@@ -1,20 +1,20 @@
 "use client";
-
-/* import React, { useEffect } from 'react';
+/* 
+ import React, { useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { MdOutlineStarBorder } from 'react-icons/md';
 import { IoAddCircle } from 'react-icons/io5';
 import { FaRegHeart } from 'react-icons/fa';
-import Image from 'next/image'; */
-//import applewatch from '../../public/assets/applewatch.png';
+import Image from 'next/image'; 
+import applewatch from '../../public/assets/applewatch.png';
 
-/* import { useDispatch, useSelector } from 'react-redux';
+ import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '@/Redux/productSlice';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation'; */
+import { useRouter } from 'next/navigation'; 
 
-/* export async function generateStaticParams() {
-  //const apiUrl = process.env.NEXT_PUBLIC_API_URL
+ export async function generateStaticParams() {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const res = await fetch(`http://localhost:8800/popularproducts`);
   const data = await res.json();
   console.log(data);
@@ -22,16 +22,16 @@ import { useRouter } from 'next/navigation'; */
     id:products .id
   }));  
 }
- */
-//console.log(data)
+ 
+console.log(data)
 
 const PopularProducts = () => {
-/*   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const {data, pending} = useSelector((state) => state.product)
 
   const router = useRouter()
 
-  //console.log(data)
+  console.log(data)
 
   const dispatch = useDispatch()
 
@@ -39,9 +39,9 @@ const PopularProducts = () => {
      dispatch(getData())
   },[])
     
- */
+ 
   return (
-  /*   <div>
+    <div>
       <div className="flex mb-5 mt-5 justify-between">
         <p className="text-xl font-bold">Popular Products 2023</p>
         <div className="flex gap-2">
@@ -97,9 +97,9 @@ const PopularProducts = () => {
                 </div>
               </div>
             </div>
-          ))} */
+          ))} 
  
-          {/*  <div>
+            <div>
            <Link href={'/productpage'}>
              <div
                key={id}
@@ -133,9 +133,9 @@ const PopularProducts = () => {
                <IoAddCircle size={40} />
              </div>
            </div>
-         </div>  */}
+         </div>  
 
-          {/* <div>
+           <div>
          <div className="bg-slate-200 relative mb-2 rounded-md w-60 h-80">
            <Image className="absolute mt-10" src={applewatch} alt="" />
            <div className="absolute  w-7 h-7 bg-white ml-2 mt-2 rounded-full">
@@ -196,8 +196,8 @@ const PopularProducts = () => {
            </div>
          </div>
        </div>
- */}
-          {/*    <div>
+ 
+              <div>
          <div className="bg-slate-200 relative mb-2 rounded-md w-60 h-80">
            <Image className="absolute mt-10" src={applewatch} alt="" />
            <div className="absolute  w-7 h-7 bg-white ml-2 mt-2 rounded-full">
@@ -226,11 +226,12 @@ const PopularProducts = () => {
              <IoAddCircle size={40} />
            </div>
          </div>
-       </div>  */}
-        /*  </div>
+       </div>  
+          </div>
       )} 
-    </div> */
-  );
-};
+    </div> 
+   );
+}; 
 
 export default PopularProducts;
+ */

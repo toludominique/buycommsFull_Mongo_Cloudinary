@@ -1,9 +1,9 @@
 "use client";
-
-/* import {  useParams } from 'next/navigation';
-import { useEffect, useState } from 'react'; */
-//import { useDispatch, useSelector } from "react-redux";
-/* import logohere2 from '../../../../public/assets/logohere2.png';
+/* 
+ import {  useParams } from 'next/navigation';
+import { useEffect, useState } from 'react'; 
+import { useDispatch, useSelector } from "react-redux";
+ import logohere2 from '../../../../public/assets/logohere2.png';
 import applewatch from '../../../../public/assets/applewatch.png';
 import star from '../../../../public/assets/star.png';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -16,11 +16,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from '@/Redux/counterSlice';
 import { add, increase } from '@/Redux/cartSlice';
 import Link from 'next/link';
-import { getData } from '@/Redux/productSlice'; */
-//import { getData } from "@/Redux/singleProductSlice";
+import { getData } from '@/Redux/productSlice'; 
+import { getData } from "@/Redux/singleProductSlice";
 
 
-/* export async function generateStaticParams  () {
+ export async function generateStaticParams  () {
 
   const res = await fetch(
     `http://localhost:8800/popularproducts`
@@ -35,24 +35,24 @@ import { getData } from '@/Redux/productSlice'; */
  
 
 } 
- */
+ 
 
 
 function page({ params }) {
-/*   const apiUrl = process.env.NEXT_PUBLIC_API_URL
+   const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const { count } = useSelector((state) => state.counter);
   const cartProducts = useSelector((state) => state.cart);
   const {amount} = useSelector((state) => state.cart)
   const user = useSelector((state) => state.user);
-  //const { data, pending } = useSelector((state) => state.product);
+  const { data, pending } = useSelector((state) => state.product);
   const [image, setImage] = useState('');
-  const [product, setProduct] = useState({}) */
-  // const dispatch = useDispatch();
+  const [product, setProduct] = useState({}) 
   
-  //const params = useParams()
+  
+  const params = useParams()
 
   
-/*   const id = params.id;
+   const id = params.id;
   console.log(params)
  
      useEffect(() => {
@@ -76,43 +76,43 @@ function page({ params }) {
     singleProduct();
   }, [params.id]);
 
-  console.log(product) */
+  console.log(product) 
 
-  /* async function generateStaticParams  () {
+   async function generateStaticParams  () {
 
     return [{  }]
-  } */
-/* 
+  } 
+ 
   const addCart = (product) => {
     dispatch(add(product));
   };
   const dispatch = useDispatch();
- */
-/*   useEffect(() => {
+ 
+   useEffect(() => {
     dispatch(getData());
   }, []);
-  */
-/*   if (pending) {
+  
+   if (pending) {
     return <h1>Loading...</h1>;
-  } */
+  } 
 
-/*   const handleIncrease = (item) => {
+   const handleIncrease = (item) => {
     dispatch(add(item))
   }
 
- */
+ 
 
 
-  //const single = data.find((item) => item._id === id);
+  const single = data.find((item) => item._id === id);
 
-  /*  const handleClick = () => {
+    const handleClick = () => {
     setImage()
   
   }
-     */
-  //console.log(single?.image);
+     
+  console.log(single?.image);
   return (
-    {/* <div className="flex flex-col gap-3">
+     <div className="flex flex-col gap-3">
       <div className=" flex justify-between w-full items-center h-10 font-light bg-gray-300 text-xs">
         <div className="flex gap-2 ml-10">
           <p>FACEBOOK</p>
@@ -265,8 +265,8 @@ function page({ params }) {
               <p> shipping within 2 business workdays</p>
             </div>
           </div>
-          <div className="flex mt-5 "> */}
-           {/*  <button
+          <div className="flex mt-5 "> 
+             <button
               onClick={() => dispatch(decrement())}
               className="flex justify-center w-7 h-7 bg-gray-200 text-lg cursor-pointer"
             >
@@ -279,8 +279,8 @@ function page({ params }) {
               className=" flex justify-center w-7 h-7 bg-gray-200 text-lg  cursor-pointer"
             >
               +
-            </button> */}
-            {/* <button
+            </button> 
+             <button
               onClick={() => addCart(product)}
               className="w-20 h-7  p-1 text-white text-xs bg-blue-900 cursor-pointer"
             >
@@ -326,8 +326,9 @@ function page({ params }) {
           </p>
         </div>
       </div>
-    </div> */}
+    </div> 
   );
 }
 
 export default page;
+ */
