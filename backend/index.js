@@ -23,7 +23,7 @@ app.listen(8800, () => {
  app.use(express.json())
  app.use(cors({
 
-   origin: "https://buycommsfull-mongo-cloudinary-29.onrender.com",
+   origin: "https://buycomms-full-mongo-cloudinary-wkbd.vercel.app",
   
  }))
  app.use(bodyParser.json())
