@@ -56,7 +56,7 @@ export async function getAllProduct () {
   
 
   const res = await fetch(
-    `http://localhost:8800/popularproducts`
+    `${apiUrl}/popularproducts`
   );
 
  return res.json()
@@ -66,7 +66,7 @@ export async function getAllProduct () {
 export async function singleProduct (id) {
   
   const res = await fetch(
-    `http://localhost:8800/${id}`
+    `${apiUrl}/${id}`
   );
 
  return res.json()
