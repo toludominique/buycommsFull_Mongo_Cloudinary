@@ -16,6 +16,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from '@/Redux/counterSlice';
 import { add, increase } from '@/Redux/cartSlice';
 import Link from 'next/link';
+import ProductImage from '@/components/ProductImage';
+import Button from '@/components/Button';
+import UserCart from '@/components/UserCart';
 
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -171,8 +174,8 @@ const data = await singleProduct(params.id)
       <div className=" flex w-20 h-10 relative ml-40">
         <Image className="absolute" src={logohere2} alt="" fill />
       </div>
-      <div className="flex flex-row justify-between h-10 gap-5 mr-5  ">
-        <div>
+      <div >
+      {/*   <div>
           <MdOutlinePerson size={20} />
           <p className="text-xs">John</p>
         </div>
@@ -188,7 +191,8 @@ const data = await singleProduct(params.id)
             <AiOutlineShoppingCart size={20} />
           </div>
           <p className="text-xs">John</p>
-        </Link>
+        </Link> */}
+        <UserCart />
       </div>
     </div>
     <div className="flex flex-row justify-between ml-10 mr-10 border-b sm:flex gap-5">
@@ -250,15 +254,16 @@ const data = await singleProduct(params.id)
             />
           </div>
 
-          <div className="  w-16 h-24 relative ml-3 mt-5">
-            <Image
+          <div className=" w-16 h-24 relative ml-3 mt-5">
+         {/*    <Image
               className=" absolute"
               src={applewatch}
               alt=""
               fill
               objectFit="cover"
               //onClick={() => setImage(applewatch)}
-            />
+            /> */}
+            <ProductImage />
           </div>
 
           <div className=" w-16 h-24 relative ml-3 mt-5">
@@ -332,6 +337,7 @@ const data = await singleProduct(params.id)
             {' '}
             CART
           </button> */}
+          <Button />
         </div>
         <div className="w-96 mt-5">
           <p className="whitespace-normal">{data.desc}</p>
