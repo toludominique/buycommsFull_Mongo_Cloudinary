@@ -53,7 +53,7 @@ console.log(data)
           <div className="flex w-screen overflow-x-scroll justify-between gap-5">
           {data.map((item) => (
          <div key={item._id}>
-           <Link href={`/productpage/${item._id}`}>
+           <Link href={`/prodPage/${item._id}`}>
              <div
              
                className="bg-slate-200 relative mb-2 rounded-md w-60 h-80"

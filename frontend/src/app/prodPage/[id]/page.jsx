@@ -1,6 +1,5 @@
 
 
-
 import React from 'react'
 
 import logohere2 from '../../../../public/assets/logohere2.png';
@@ -23,144 +22,47 @@ import UserCart from '@/components/UserCart';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-/* export async function generateStaticParams  () {
+
+
+
+/* export async function getAllProduct () {
   
 
-  const res = await fetch(
-    `http://localhost:8800/popularproducts`
-  );
-  const data = await res.json()
- console.log(data)
-   return data.map((item) => ({
-    params: {
-      id: item._id,
-    }
-  }))
- 
-}  */
+    const res = await fetch(
+        `${apiUrl}/popularproducts`,
+        {
+          cache: 'no-store',
+        }
+      );
 
- /*   async function getProduct(id) {
-  const res = await fetch(`http://localhost:8800/${id}`, {
-    cache: 'no-store'
-  });
-   
-  const product = await res.json();
+      return res.json();
 
-return res.json()
-}*/
+} */
 
-/* export async function generateStaticParams  () {
-  
-return [{"_id": "65d3d76299dd42ede719d659"}]
-}
-  */
-
-export const dynamicParams = true;
-
-export async function getAllProduct () {
-  
-
-  const res = await fetch(
-    `${apiUrl}/popularproducts`
-  );
-
- return res.json()
-
-}
 
 export async function singleProduct (id) {
   
   const res = await fetch(
-    `${apiUrl}/${id}`
+    `${apiUrl}/${id}`,
+    {
+      cache: 'no-store',
+    }
+
   );
 
  return res.json()
 
 }
 
-/* export const getSingleProduct = async (params) => {
-  const singleProduct = await getProduct()
-  const product = singleProduct?.find((item) => {
-    item._id === params.id
-    
-  })
-  return product;
+
  
-   
-}
-  */
-
-/* export async function generateStaticParams  () {
-  
-  return [{"_id": "65d3d76299dd42ede719d659"}]
-  }
-
- */
-
-  export async function generateStaticParams  () {
-  
-  const products = await getAllProduct()
-
-  return products.map((item) => ({id: `${item._id}`}))
-    }
-
  async function page({ params }) {
 
 
   
-  //const dispatch = useDispatch();
-  //const { id } = params;
-  //const { cartItems } = useSelector((state) => state.cart);
-  //const user = useSelector((state) => state.user);
-  //const [product, setProduct] = useState({});
-  //const [image, setImage] = useState('');
-
-/*   useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const res = await fetch(`${apiUrl}/${id}`, {
-          cache: 'no-store'
-        });
-        const data = await res.json();
-        setProduct(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (id) {
-      fetchProduct();
-    }
-    
-  
-  }, [apiUrl, id]);
-
-  const addCart = (product) => {
-    dispatch(add(product));
-  };
-
-
-  const handleIncrease = (item) => {
-    dispatch(add(item))
-  }
-
- */
-
-       /*  const res = await fetch(
-          `http://localhost:8800/${params.id}`
-        
-        );
-
-        const data = await res.json(); */
-        //setProduct(data);
-      
-     //const product = await getProduct(params.id)
-
-    /*   const product = await getSingleProduct(params.id)
-    console.log(product)
- */
 console.log("this page id is", params.id)
 const data = await singleProduct(params.id)
+
   return (
     <div className="flex flex-col gap-3">
     <div className=" flex justify-between w-full items-center h-10 font-light bg-gray-300 text-xs">
