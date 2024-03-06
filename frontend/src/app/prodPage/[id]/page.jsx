@@ -6,15 +6,11 @@ import logohere2 from '../../../../public/assets/logohere2.png';
 import applewatch from '../../../../public/assets/applewatch.png';
 import star from '../../../../public/assets/star.png';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { MdOutlineMail, MdOutlinePerson } from 'react-icons/md';
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+
 import { IoIosArrowDown } from 'react-icons/io';
 import { FiSearch } from 'react-icons/fi';
 import Image from 'next/image';
-import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment } from '@/Redux/counterSlice';
-import { add, increase } from '@/Redux/cartSlice';
-import Link from 'next/link';
+
 import ProductImage from '@/components/ProductImage';
 import Button from '@/components/Button';
 import UserCart from '@/components/UserCart';
@@ -23,9 +19,9 @@ import UserCart from '@/components/UserCart';
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 
+/* 
 
-
-/* export async function getAllProduct () {
+ export async function getAllProduct () {
   
 
     const res = await fetch(
@@ -37,7 +33,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
       return res.json();
 
-} */
+}  */
 
 
 export async function singleProduct (id) {
@@ -59,8 +55,6 @@ export async function singleProduct (id) {
  async function page({ params }) {
 
 
-  
-console.log("this page id is", params.id)
 const data = await singleProduct(params.id)
 
   return (
@@ -79,23 +73,7 @@ const data = await singleProduct(params.id)
         <Image className="absolute" src={logohere2} alt="" fill />
       </div>
       <div >
-      {/*   <div>
-          <MdOutlinePerson size={20} />
-          <p className="text-xs">John</p>
-        </div>
-        <div className="flex flex-col items-center">
-          <MdOutlineMail size={20} />
-          <p className="text-xs">John@gmail.com</p>
-        </div>
-        <Link href={'/cartPage'}>
-          <div className="relative flex  ">
-            <div className="flex right-3 bottom-2 justify-center items-center w-4 h-4 absolute rounded-full text-white text-xs bg-red-600">
-             5
-            </div>
-            <AiOutlineShoppingCart size={20} />
-          </div>
-          <p className="text-xs">John</p>
-        </Link> */}
+
         <UserCart />
       </div>
     </div>
@@ -119,8 +97,9 @@ const data = await singleProduct(params.id)
       <p>PORTFOLIO</p>
       <p className="font-extralight">PORTFOLIO</p>
     </div>
-
-    <div className="flex flex-row  justify-center mt-5 ml-28 gap-5">
+    {
+    data ? (
+      <div className="flex flex-row  justify-center mt-5 ml-28 gap-5">
       <div className="flex flex-col  gap-2">
         <div>
           {!data.image ? (
@@ -159,14 +138,7 @@ const data = await singleProduct(params.id)
           </div>
 
           <div className=" w-16 h-24 relative ml-3 mt-5">
-         {/*    <Image
-              className=" absolute"
-              src={applewatch}
-              alt=""
-              fill
-              objectFit="cover"
-              //onClick={() => setImage(applewatch)}
-            /> */}
+      
             <ProductImage />
           </div>
 
@@ -220,27 +192,7 @@ const data = await singleProduct(params.id)
           </div>
         </div>
         <div className="flex mt-5 ">
-         {/*  <button
-            onClick={() => dispatch(decrement())}
-            className="flex justify-center w-7 h-7 bg-gray-200 text-lg cursor-pointer"
-          >
-            -
-          </button>
-        
-          <div className="flex justify-center w-7 h-7 ">{amount}</div>
-          <button
-            onClick={() => handleIncrease(single)}
-            className=" flex justify-center w-7 h-7 bg-gray-200 text-lg  cursor-pointer"
-          >
-            +
-          </button> */}
-          {/* <button
-            onClick={() => addCart(product)}
-            className="w-20 h-7  p-1 text-white text-xs bg-blue-900 cursor-pointer"
-          >
-            {' '}
-            CART
-          </button> */}
+ 
           <Button />
         </div>
         <div className="w-96 mt-5">
@@ -248,6 +200,13 @@ const data = await singleProduct(params.id)
         </div>
       </div>
     </div>
+
+    ) : (
+      <div>
+        <p>NO PRODUCT DETAILS</p>
+      </div>
+    )
+    }
 
     <div className="w-full h-5 text-xs ml-10 mt-5 flex gap-10 ">
       <p>ADDITIONAL INFORMATION</p>
