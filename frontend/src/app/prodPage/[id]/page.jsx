@@ -47,7 +47,7 @@ export async function singleProduct (id) {
   );
 
  return res.json()
-
+ 
 }
 
 
@@ -98,7 +98,9 @@ const data = await singleProduct(params.id)
       <p className="font-extralight">PORTFOLIO</p>
     </div>
     {
-    data ? (
+    data.length === 0 ? (<div>
+      <p>Loading...</p>
+    </div>) : (
       <div className="flex flex-row  justify-center mt-5 ml-28 gap-5">
       <div className="flex flex-col  gap-2">
         <div>
@@ -201,11 +203,7 @@ const data = await singleProduct(params.id)
       </div>
     </div>
 
-    ) : (
-      <div>
-        <p>NO PRODUCT DETAILS</p>
-      </div>
-    )
+    ) 
     }
 
     <div className="w-full h-5 text-xs ml-10 mt-5 flex gap-10 ">
