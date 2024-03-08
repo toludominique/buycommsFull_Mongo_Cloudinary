@@ -50,12 +50,12 @@ export async function singleProduct (id) {
  
 }
 
-
  
  async function page({ params }) {
 
 
 const data = await singleProduct(params.id)
+console.log(data)
 
   return (
     <div className="flex flex-col gap-3">

@@ -55,7 +55,7 @@ return [{"_id": "65d3d76299dd42ede719d659"}]
 }
   */
 
-export const dynamicParams = true;
+//export const dynamicParams = true;
 
 export async function getAllProduct () {
   
@@ -96,6 +96,7 @@ export async function singleProduct (id) {
   }
 
  */
+export const revalidate = 60
 
   export async function generateStaticParams  () {
   
@@ -159,7 +160,7 @@ export async function singleProduct (id) {
     /*   const product = await getSingleProduct(params.id)
     console.log(product)
  */
-console.log("this page id is", params.id)
+
 const data = await singleProduct(params.id)
   return (
     <div className="flex flex-col gap-3">

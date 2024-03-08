@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import applewatch from '../../../public/assets/applewatch.png';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,16 +9,16 @@ import { add, calculateTotals, increase } from '@/Redux/cartSlice';
 import Link from 'next/link';
 
 function page() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL
+  //const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const productCart = useSelector((state) => state.cart);
-  const { items } = useSelector((state) => state.cart);
+  //const { items } = useSelector((state) => state.cart);
   //const { value } = useSelector((state) => state.cart)
   //console.log(productCart);
   const dispatch = useDispatch();
 
-  useEffect(() => {
+/*   useEffect(() => {
     dispatch(calculateTotals());
-  }, []);
+  }, []); */
 
   const handleIncrease = (item) => {
     dispatch(add(item));
